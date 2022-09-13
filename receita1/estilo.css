@@ -1,0 +1,36 @@
+*{
+    text-align: center;
+
+}
+
+p.verso{
+    color:Blue;
+
+}
+
+p.mote{
+    color:red;
+}
+
+a.autor:visited{
+
+    color:lightgreen;
+
+}
+
+a.autor:hover{
+
+    color: black;
+
+}
+
+img.jp{
+    border-radius: 80px;
+}
+
+
+div img.poeta{
+
+    border-radius: 80px
+
+}

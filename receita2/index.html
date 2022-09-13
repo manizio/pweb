@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+        <link rel="stylesheet" href="style.css">
+      <meta charset="UTF-8">      
+
+   </head>
+
+
+
+   <body>
+        <div id="cerveja"></div>
+        <div id="meu amor"><button id="botaoCarregar">Carregando cervejas...</button></div>            
+
+   </body>   
+   <script>
+        function carregarDiv(){
+
+            let div = document.getElementById("cerveja")
+            div.style.opacity = 0;
+            
+            var cervejas = ['Guinness', 'Skol', 'Itaipava', 'Kaiser', 'Brahma', 'Duff']
+
+            setTimeout(function (){
+                if (div.innerHTML != ""){
+                div.innerHTML = ""
+                }
+                else
+                {
+                    div.innerHTML = `<h1> ${cervejas[Math.floor(Math.random() * (cervejas.length -1))]} </h1>`
+                    
+                }
+                div.style.opacity = 1;
+
+            }, 500)
+        }
+
+        let botao = document.getElementById("botaoCarregar")
+        botao.addEventListener("click", carregarDiv)
+        
+
+   </script>
+</html>
