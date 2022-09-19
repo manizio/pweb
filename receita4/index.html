@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+
+      <meta charset="UTF-8">    
+      <link rel="stylesheet" href="style.css">  
+
+   </head>
+
+
+
+   <body>
+
+    <table id="tabela">
+    </table>
+    
+    <div id="meu amor">
+    </div>   
+    <div id="botoes">
+        <!-- <button id="botaoCarregar">Carregando cervejas...</button>
+        <button id="botaoOrdenar">Ordenar Cervejas</button>
+        <button id="embaralhar">Embaralhar</button> -->
+
+        <a id="linkCarregar" href="javascript:void(0)">Carregando bandas...</a>
+        <a id="linkOrdenar" href="javascript:void(0)">Ordenar Bandas</a>
+        <a id="linkEmbaralhar" href="javascript:void(0)">Embaralhar</a>
+
+    </div>         
+   </body>   
+
+   
+
+   <script>
+
+      let bandas = ["Pink Floyd", "Metallica", "Limp Bizkit", "Led Zeppelin", "Red Hot Chili Peppers"]
+
+
+      const carregarDiv = (bandas) => {
+
+         const div = document.getElementById("meu amor")
+
+         const bandasHtml = bandas.sort().map(item => `<h1>${item}</h1>`) 
+
+         div.innerHTML = `${bandasHtml.join("\n")}`
+
+      }
+
+      const embaralharDiv = (bandas) =>{
+
+        let div = document.getElementById("meu amor")
+        let randomBandas = bandas.sort(() => Math.random() - 0.5).map(item => `<h1>${item}</h1>`)
+
+        div.innerHTML = `<h1>${randomBandas.join("\n")}</h1>`
+
+      }
+
+      const gerarTable = (bandas) =>{
+        let table = document.getElementById("tabela")
+        let bloco = ""
+        for (let i of bandas) {
+            bloco += `<tr><td>${i}</td></tr>`
+        }
+
+        table.innerHTML = "<tr><th> Bandas </th></tr>" + bloco
+      }
+      /*
+      let botao = document.getElementById("botaoCarregar")
+      let botao2 = document.getElementById("botaoOrdenar")
+      let botao3 = document.getElementById("embaralhar")
+
+      botao.addEventListener("click", () => gerarTable(cervs))     
+      botao2.addEventListener("click", () => carregarDiv(cervs))  
+      botao3.addEventListener("click", () => embaralharDiv(cervs))*/
+      let link = document.getElementById("linkCarregar")
+      let link2 = document.getElementById("linkOrdenar")
+      let link3 = document.getElementById("linkEmbaralhar")
+
+      link.addEventListener("click", () => gerarTable(bandas))
+      link2.addEventListener("click", () => carregarDiv(bandas))
+      link3.addEventListener("click", () => embaralharDiv(bandas))
+
+
+   </script>
+
+</html>
