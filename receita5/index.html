@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+
+      <meta charset="UTF-8">  
+      <link rel="stylesheet" href="style.css">    
+
+   </head>
+
+
+   <body>
+
+      <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+
+      <div id="cervejasDiv"></div>            
+
+   </body>   
+
+   
+
+   <script>
+
+
+      let cervejas = [{name:"Guiness",
+    alcohol: "10%",
+    style:"Red Ale",
+    ibu:"30"
+}, 
+
+    {name:"Desperados",
+    alcohol: "6%",
+    style:"Cream Ale",
+    ibu:"15"
+}, 
+    {name: "Becks",
+    alcohol:"5%",
+    style:"Imperial Scout",
+    ibu:"16"
+}]
+
+    
+
+      //cs é um array de cervejas
+
+
+      const carregarDiv = (cs, id="cervejasDiv", cab1="Nome", cab2="Álcool",cab3="Estilo",cab4="Amargor", prop1="name",prop2="alcohol",prop3="style",prop4="ibu") => {
+        /*
+         const div = document.getElementById("cervejasDiv")
+
+         const itensHtml = cs.map( item => `<div>${item['name']} -- ${item['alcohol']}</div>` ) 
+
+         div.innerHTML = `${itensHtml.join("\n")}`*/
+
+        const div = document.getElementById(`${id}`)
+
+        let bloco = ""
+
+        bloco = cs.map(item => `<tr><td>${item[`${prop1}`]}</td><td>${item[`${prop2}`]}</td><td>${item[`${prop3}`]}</td><td>${item[`${prop4}`]}</td></tr>`).join("\n")
+
+        div.innerHTML = `<table><tr><th>${cab1}</th><th>${cab2}</th><th>${cab3}</th><th>${cab4}</th></tr>` + bloco + `</table>`
+
+      }
+
+      
+      let botao = document.getElementById("botaoCarregar")
+
+      botao.addEventListener("click", () => carregarDiv(cervejas))                 
+
+
+   </script>
+
+</html>
