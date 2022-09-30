@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+
+      <meta charset="UTF-8">      
+      <link rel="stylesheet" href="style.css">
+   </head>
+
+
+
+   <body>
+
+      <div><button id="botaoCarregar">Carregando objetos...</button></div>
+
+      <div id="apiDiv"></div>            
+
+   </body>   
+
+   
+
+   <script type="module">
+    import {montarTabela} from './js.js'
+    import {montarTabelaGenerica} from './js.js'
+
+
+      let apiArray = []
+      async function carregarAPI(api){
+
+        try{
+
+            let res = await fetch(`${api}`)
+            apiArray = await res.json()
+            montarTabelaGenerica(apiArray) 
+        } catch(err){
+
+            document.getElementById("apiDiv").innerHTML = "Fudeu..." + err
+        }
+
+
+
+      }
+
+
+      let botao = document.getElementById("botaoCarregar")
+
+      botao.addEventListener("click", () => carregarAPI("https://random-data-api.com/api/v2/beers?size=3") )                 
+      //mudar pra ../algumabaixo?size=3
+
+      //banks
+      //credit_cards
+      //users
+      //beers
+      //appliances
+      //blood_types
+      //addresses
+
+
+   </script>
+
+</html>
