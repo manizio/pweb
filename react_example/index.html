@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+
+      <title>ReactZero</title>     
+      <link rel="stylesheet" href="style/style.css"> 
+   </head>
+
+   <body>
+
+      <div id="app">
+      </div>
+
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+      <script src="libs/babel.js"></script>
+
+      
+
+      <script type="text/babel">
+        
+        let cervejas = [{name:"Guiness",
+            alcohol: "10%",
+            style:"Red Ale",
+            ibu:"30"
+        }, 
+
+            {name:"Desperados",
+            alcohol: "6%",
+            style:"Cream Ale",
+            ibu:"15"
+        }, 
+            {name: "Becks",
+            alcohol:"5%",
+            style:"Imperial Scout",
+            ibu:"16"
+        }]
+
+
+        function TabelaBebidas(){
+            return (
+            <div>
+                <Cabecalho> </Cabecalho>
+                <GerarTabela> </GerarTabela>
+            </div>)
+        }
+        const GerarTabela = () => {
+            return (
+            <React.Fragment>    
+                <div id="app">
+                    <table id="tabela" border="1">
+                        <thead>
+                            <tr><th>Nome</th><th>Marca</th></tr>
+                            </thead>
+                        <tbody>
+                            <tr><td>Havana</td><td>Engenho Anísio Santiago</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </React.Fragment>)
+        }
+        const GerarTabelaCervejas = () => {
+            return (
+                    <table class="tabelaCervejas"> 
+                        <thead>
+                            <tr><th>Nome</th><th>Álcool</th></tr>            
+                        </thead>
+                        <tbody>
+                            {cervejas.map(i => <tr><td>{i.name}</td> <td>{i.alcohol}</td></tr>)}
+                        </tbody>
+                    </table>
+            )
+
+
+        }
+
+        /*{cervejas.map(item => {
+            return (
+                            <tr><td>{item.name}</td></tr>
+                        )
+                    })}
+        const Cabecalho = () => {
+            return(
+                <h1>Minha Tabela de Bebidas</h1>
+            )
+        }*/
+        const HandleClick = () => {
+            return(<div><button onClick = {renderTabela}>Tabela</button> <div id="table"></div></div>)
+        }
+
+        const renderTabela = () => {
+            ReactDOM.render(<GerarTabelaCervejas/>, document.getElementById("table"))
+        }
+
+        ReactDOM.render(<HandleClick/>, document.getElementById("app"))
+        
+            
+      </script>
+
+
+   </body>
+
+</html>
